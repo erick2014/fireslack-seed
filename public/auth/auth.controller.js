@@ -1,5 +1,8 @@
 angular.module('angularfireSlackApp')
-	//injects Auth controller, it uses firebase module. Iject $state service from ui-router
+	/*
+	  Injects Auth controller, it uses firebase module. 
+		Ijects $state service from ui-router
+	*/
 	.controller('AuthCtrl',function(Auth,$state){
 		var self=this;
 
@@ -11,8 +14,7 @@ angular.module('angularfireSlackApp')
 			//succcess cb
 			.then(function(authData){
 				alert("usuario autenticado");
-				console.log(authData);
-				//$state.go('home');
+				$state.go('home');
 			},
 			//err callback
 			function(error){
@@ -26,8 +28,7 @@ angular.module('angularfireSlackApp')
 				//success callback
 				.then(function(user){
 					alert("usuario creado");
-					console.log(user)
-					//self.login();
+					self.login();
 				},
 				//failure callback
 				function(error){
