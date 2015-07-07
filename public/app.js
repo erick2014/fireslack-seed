@@ -48,6 +48,27 @@ angular
           }
         }
       })
+      .state('profile', {
+        url: '/profile',
+        controller:'profileCtrl as profCtrl',
+        resolve: {
+          auth: function($state, Users, Auth){
+            return Auth.$requireAuth()
+            //if user is not authenticated redirect him to home page
+            .catch(function(){
+              $state.go('home');
+            });
+          },
+          profile: function(Users, Auth){
+            return Auth.$requireAuth()
+            //if the user is authenticated then get profile data(authData)
+            //from firebase
+            .then(function(authData){
+              return Users.getProfile(authData.uid).$loaded();
+            });
+          }
+        }
+      })
 
     $urlRouterProvider.otherwise('/');
   })
