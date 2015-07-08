@@ -51,6 +51,8 @@ angular
       .state('profile', {
         url: '/profile',
         controller:'profileCtrl as profCtrl',
+        templateUrl:'users/profile.html',
+        //load some data before profileCtrl instantiation
         resolve: {
           //this will be  injected as a service into profileCtrl
           auth: function($state, Users, Auth){
