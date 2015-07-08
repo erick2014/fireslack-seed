@@ -52,6 +52,7 @@ angular
         url: '/profile',
         controller:'profileCtrl as profCtrl',
         resolve: {
+          //this will be  injected as a service into profileCtrl
           auth: function($state, Users, Auth){
             return Auth.$requireAuth()
             //if user is not authenticated redirect him to home page
@@ -59,6 +60,7 @@ angular
               $state.go('home');
             });
           },
+          //this will be  injected as a service into profileCtrl
           profile: function(Users, Auth){
             return Auth.$requireAuth()
             //if the user is authenticated then get profile data(authData)
