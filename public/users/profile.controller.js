@@ -13,6 +13,8 @@ angular.module('angularfireSlackApp')
 		self.profile=profile;
 		
 		self.updateProfile=function(){
+			//set emailHash property into profile object returned from profile state
+			//also change the displayName suing profile.html view
 			self.profile.emailHash=md5.createHash(auth.password.email)
 			self.profile.$save();
 		}
