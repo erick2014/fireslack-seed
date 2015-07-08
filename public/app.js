@@ -76,6 +76,7 @@ angular
       .state('channels', {
         url: '/channels',
         controller:"channelCtrl as chCtrl",
+        templateUrl:"channels/channels.html",
         /*
           load channels(promise) and profile(dependency) data to later inject them
           into channelCtrl
