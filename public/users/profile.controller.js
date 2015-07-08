@@ -1,12 +1,13 @@
 /*
-  Injects Auth service it uses firebase module(personal). 
 	Ijects $state service from ui-router
 	Injects md5 service( angular library )
+  Injects auth service(defined at profile state into main app). 
+	Injects profile service(defined at profile state into main app). 
 */
 angular.module('angularfireSlackApp')
 	.controller('profileCtrl',function($state,md5,auth,profile){
 
-		console.log("initializing controller, profileCtrl");
+		console.log("initializing controller, profile=",profile);
 		var self=this;
 		
 		self.profile=profile;
