@@ -11,13 +11,27 @@ angular.module("angularfireSlackApp")
 		var users=$firebaseArray(usersRef);
 
 		var Users={
-			//allow us to get and object of a specific user's profile
+			//get the user's profile information, passin in the user's uid
 			getProfile:function(uid){
 				return $firebaseObject(usersRef.child(uid));
 			},
-			//allow us to get an array's element, given an uid
+			//get the display name using the uid of the current logged in user
 			getDisplayName:function(uid){
-				return users.$getRecord(uid).displayName;
+				//first get the data from firebase
+				return users.$loaded()
+							//once data is ready, return the displayName
+							.then(function(data){
+								//get a specific user using its uid
+								return users.$getRecord(uid).displayName;
+							})
+			},
+			getGravatar:function(){
+				//once data is ready, return a gravatar passin in an email hashed
+				return users.$loaded()
+							.then(function(){
+								return '//www.gravatar.com/avatar/'+users.$getRecord(uid).emailHash;
+							});
+				
 			},
 			//return all records as array
 			all:users
