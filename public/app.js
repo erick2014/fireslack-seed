@@ -73,7 +73,46 @@ angular
           }
         }
       })
-
+      .state('channels', {
+        url: '/channels',
+        controller:"channelCtrl as chCtrl",
+        /*
+          load channels(promise) and profile(dependency) data to later inject them
+          into channelCtrl
+        */
+        resolve: {
+          channels:function(Channels){
+            /*
+              here we return the channels using Channels service
+              once data is ready
+            */
+            return Channels.$loaded();
+          },
+          //Inject Users and Auth services(personal services)
+          profile:function($state,Auth,Users){
+            /*check if user is logged in*/
+            return Auth.$requireAuth()
+              /*get the auth data if the user is logged in*/
+              .then(function(authData){
+                //return profile data once is loaded from firebase
+                return Users.getProfile(authData.uid).$loaded()
+                  //if any profile was found, then return its data
+                  .then(function(profileData){
+                    if(profileData.displayName){
+                      return profileData;
+                    }
+                    else{
+                      $state.go("home")
+                    }
+                  })
+              },
+              //user is not logged in, then redirect him to home state
+              function(){
+                $state.go("home")
+              })
+          }
+        }
+      })
     $urlRouterProvider.otherwise('/');
   })
   .constant('FirebaseUrl', 'https://amber-torch-1816.firebaseio.com/');

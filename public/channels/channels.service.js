@@ -6,7 +6,6 @@ angular.module("angularfireSlackApp")
 	.factory("Channels",function($firebaseArray,FirebaseUrl){
 		//get a firebase instance that points to channels data
 		var ref=new Firebase(FirebaseUrl+'channels');
-		//get an array using $firebaseArray service passin in a ref to channels
-		var channels=$firebaseArray(ref);
-		return channels;
+		//get an array using $firebaseArray service passin in a firebase's ref to channels
+		return $firebaseArray(ref);
 	})

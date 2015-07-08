@@ -3,5 +3,13 @@
     "simplelogin:8":{
       "displayName": "Blake Jackson"
     }
+  },
+  "channels":{
+  	"channel:1":{
+  		"info":"some info about channel 1"
+  	},
+  	"channel:2":{
+  		"info":"some info about channel 2"
+  	}
   }
 }
