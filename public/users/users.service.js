@@ -25,7 +25,7 @@ angular.module("angularfireSlackApp")
 								return users.$getRecord(uid).displayName;
 							})
 			},
-			getGravatar:function(){
+			getGravatar:function(uid){
 				//once data is ready, return a gravatar passin in an email hashed
 				return users.$loaded()
 							.then(function(){
