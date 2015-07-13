@@ -29,6 +29,7 @@ angular
           }
         }
       })
+
       .state('register',{
         //check if user is logged in before to controller instantiation
         url: '/register',
@@ -48,6 +49,7 @@ angular
           }
         }
       })
+      
       .state('profile', {
         url: '/profile',
         controller:'profileCtrl as profCtrl',
@@ -73,6 +75,7 @@ angular
           }
         }
       })
+      
       .state('channels', {
         url: '/channels',
         controller:"channelCtrl as chCtrl",
@@ -102,9 +105,7 @@ angular
                     if(profileData.displayName){
                       return profileData;
                     }
-                    else{
-                      $state.go("home")
-                    }
+                    else{ $state.go("home") }
                   })
               },
               //user is not logged in, then redirect him to home state
