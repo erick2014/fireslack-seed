@@ -132,7 +132,7 @@ angular
       //this state is a child of channels state
       .state('channels.create',{
         url:'/create',
-        templateUrl:'channels/create.hml',
+        templateUrl:'channels/create.html',
         controller:'channelCtrl as chCtrl'
       })
     $urlRouterProvider.otherwise('/');
