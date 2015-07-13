@@ -3,7 +3,10 @@
 
     <div class="slack-name"> <h2>FireSlack</h2> </div>
 
-    <div class="channel-list"> <div class="list-head">Channels</div></div>
+    <div class="channel-list">
+      <div class="list-head">Channels</div>
+      <div class="channel" ng-repeat="ch in chCtrl.channels"><a href="#">{{ch.name}}</a></div>
+    </div>
 
     <div class="my-info">
       <img class="user-pic" ng-src="{{ chCtrl.getGravatar(chCtrl.profile.$id) }}" />
@@ -19,6 +22,8 @@
         </div>
       </div>
     </div>
-
+    <div class="message-pane">
+      <ui-view></ui-view>
+    </div>
   </div>
 </div>
