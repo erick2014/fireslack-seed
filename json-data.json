@@ -6,10 +6,10 @@
   },
   "channels":{
   	"channel:1":{
-  		"info":"some info about channel 1"
+  		"name":"channel 1"
   	},
   	"channel:2":{
-  		"info":"some info about channel 2"
+  		"name":"channel 2"
   	}
   }
 }
