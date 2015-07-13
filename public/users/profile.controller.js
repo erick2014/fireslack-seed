@@ -16,7 +16,11 @@ angular.module('angularfireSlackApp')
 			//set emailHash property into profile object returned from profile state
 			//also change the displayName suing profile.html view
 			self.profile.emailHash=md5.createHash(auth.password.email)
-			self.profile.$save();
+			//if profile is updated successfully then go channels state
+			self.profile.$save()
+				.then(function(){
+					$state.go("channels");
+				});
 		}
 
 	});
