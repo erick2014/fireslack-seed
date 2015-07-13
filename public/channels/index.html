@@ -1,11 +1,10 @@
 <div class="main">
   <div class="sidebar">
-
     <div class="slack-name"> <h2>FireSlack</h2> </div>
-
     <div class="channel-list">
       <div class="list-head">Channels</div>
-      <div class="channel" ng-repeat="ch in chCtrl.channels"><a href="#">{{ch.name}}</a></div>
+      <div class="channel" ng-repeat="ch in chCtrl.channels">#{{ch.name}}</div>
+      <div class="channel create"> <a ui-sref="channels.create">+Create channel</a> </div>
     </div>
 
     <div class="my-info">
@@ -22,8 +21,8 @@
         </div>
       </div>
     </div>
-    <div class="message-pane">
+  </div>
+   <div class="message-pane">
       <ui-view></ui-view>
     </div>
-  </div>
 </div>
