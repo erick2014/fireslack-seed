@@ -8,7 +8,21 @@ angular
     $stateProvider
       .state('home', {
         url: '/',
-        templateUrl: 'home/home.html'
+        templateUrl: 'home/home.html',
+        resolve:{
+          //if user is authenticated then redirect to channels state
+          requireNoAuth:function(Auth,$state){
+            return Auth.$requireAuth()
+              .then(
+                function(){
+                  $state.go("channels");
+                },function(){
+                  //return nothing to allow loading home view.
+                  return;
+                }
+              )
+          }
+        } 
       })
       .state('login',{
         url: '/login',
