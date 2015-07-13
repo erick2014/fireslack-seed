@@ -129,6 +129,12 @@ angular
           }
         }
       })
+      //this state is a child of channels state
+      .state('channels.create',{
+        url:'/create',
+        templateUrl:'channels/create.hml',
+        controller:'channelCtrl as chCtrl'
+      })
     $urlRouterProvider.otherwise('/');
   })
   .constant('FirebaseUrl', 'https://amber-torch-1816.firebaseio.com/');
