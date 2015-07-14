@@ -6,6 +6,23 @@
 angular.module('angularfireSlackApp')
   .controller('MessagesCtrl',function(profile,channelName,messages){
     var self=this;
+    self.messages=messages;
+    self.message="";
+    self.channelName=channelName;
+    
+    self.sendMessage=function(){
+      if( self.messages.length > 0 ){
+        self.messages
+        .$add({
+          uid:profile.$id,
+          body:self.message,
+          timestamp:Firebase.ServerValue.TIMESTAMP
+        })
+        .then(function(){
+          self.message="";
+        })
+      }
+    }
     console.log("initializing messages controller, messages",messages);
 
   });
