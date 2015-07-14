@@ -135,6 +135,27 @@ angular
         templateUrl:'channels/create.html',
         controller:'channelCtrl as chCtrl'
       })
+      //child of channels state
+      .state('channels.messages',{
+        url:'/{channelId}/messages',
+        controller:"MessagesCtrl msgCtrl",
+        resolve:{
+          /*Inject $stateParams from ui-router
+            Inject Messages service(defined on channels module)
+          */
+          messages:function( $stateParams,Messages ){
+            //get a channel message using a parameter from url
+            return Messages.forChannel( $stateParams.channelId );
+          },
+          /*Inject $stateParams from ui-router
+            Inject channels dependecy(defined on channels state)
+          */
+          channelName:function($stateParams,channels){
+            //use getRecord method from firebaseArray object
+            return '#'+channels.$getRecord( $stateParams.channelId ).name;
+          }
+        }
+      })
     $urlRouterProvider.otherwise('/');
   })
   .constant('FirebaseUrl', 'https://amber-torch-1816.firebaseio.com/');
