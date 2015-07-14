@@ -138,6 +138,7 @@ angular
       //child of channels state
       .state('channels.messages',{
         url:'/{channelId}/messages',
+        templateUrl:'channels/messages.html'
         controller:"MessagesCtrl msgCtrl",
         resolve:{
           /*Inject $stateParams from ui-router
@@ -145,7 +146,7 @@ angular
           */
           messages:function( $stateParams,Messages ){
             //get a channel message using a parameter from url
-            return Messages.forChannel( $stateParams.channelId );
+            return Messages.forChannel( $stateParams.channelId ).$loaded();
           },
           /*Inject $stateParams from ui-router
             Inject channels dependecy(defined on channels state)
