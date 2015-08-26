@@ -138,8 +138,8 @@ angular
       //child of channels state
       .state('channels.messages',{
         url:'/{channelId}/messages',
-        templateUrl:'channels/messages.html'
-        controller:"MessagesCtrl msgCtrl",
+        templateUrl:'channels/messages.html',
+        controller:"MessagesCtrl as msgCtrl",
         resolve:{
           /*Inject $stateParams from ui-router
             Inject Messages service(defined on channels module)
